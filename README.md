@@ -20,7 +20,7 @@ Hyper Builds on AO, Beam into the future!
 - **Demo → 机会** 优秀项目有机会获得 Arweave 核心生态的关注与资源
 - **出海跳板** 入选 Top 4 直通 Arweave 亚洲大会，展示个人/项目至全球社区
 
-- 2. 日程
+## 2. 日程
 
 | 日期 / Day | 上午 | 下午 | 晚上 |
 |---|---|---|---|
