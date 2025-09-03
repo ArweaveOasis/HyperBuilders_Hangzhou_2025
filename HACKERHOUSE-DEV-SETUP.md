@@ -9,11 +9,13 @@
 HyperBEAM 需要 **Erlang/OTP 27** 版本。
 
 #### macOS
+
 ```bash
 brew install erlang@27
 ```
 
 #### Ubuntu/Debian
+
 ```bash
 # 添加 Erlang Solutions 仓库
 wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
@@ -26,6 +28,7 @@ erl -version
 ```
 
 #### Windows
+
 - 下载安装包：https://www.erlang.org/downloads
 - 选择 OTP 27.x 版本
 
@@ -122,7 +125,9 @@ sudo apt-get install lua5.3 luarocks
 lua -v
 luarocks --version
 ```
+
 ### 2. 尝试通过 HyperBEAM 创建 Process
+
 ```bash
 aos {process_name} --url http://node.arweaveoasis.com:8734
 ```
