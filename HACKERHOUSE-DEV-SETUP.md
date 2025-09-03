@@ -68,13 +68,6 @@ sudo apt-get install git
 git --version
 ```
 
-### 4. Docker（可选但推荐）
-
-用于容器化部署和测试。
-
-- **Docker Desktop**: https://www.docker.com/products/docker-desktop/
-- 验证安装：`docker --version`
-
 ## AO 开发工具链
 
 ### 1. Node.js 和 npm（必需）
@@ -97,7 +90,7 @@ npm --version
 
 ```bash
 # 全局安装 aos
-npm install -g @permaweb/aos
+npm i -g https://get_ao.arweave.net
 
 # 验证安装
 aos --version
@@ -109,7 +102,7 @@ aos --version
 2. 创建新钱包
 3. 下载并保存 keyfile（JSON 格式）
 4. **重要**：备份您的助记词和 keyfile
-5. 获取一些测试用 AR 代币
+5. 获取一些 AR 代币用于测试
 
 ## HyperBEAM 核心设置
 
@@ -119,9 +112,9 @@ aos --version
 # 克隆官方仓库
 git clone https://github.com/permaweb/HyperBEAM.git
 cd HyperBEAM
+# 需要切到 edge 分支
+git checkout edge
 
-# 编译项目
-rebar3 compile
 ```
 
 ### 2. 创建配置文件
@@ -132,26 +125,6 @@ cat > config.flat << EOF
 port: 10000
 priv_key_location: /path/to/your/wallet.json
 EOF
-```
-
-**注意**：将 `/path/to/your/wallet.json` 替换为您的实际钱包文件路径。
-
-### 3. 可选构建配置
-
-根据您的需求，可以启用额外的功能：
-
-```bash
-# RocksDB 存储后端（提升性能）
-rebar3 as rocksdb compile
-
-# Genesis WebAssembly 支持
-rebar3 as genesis_wasm compile
-
-# HTTP/3 支持（QUIC 协议）
-rebar3 as http3 compile
-
-# 组合多个 profile
-rebar3 as rocksdb,genesis_wasm compile
 ```
 
 ## 开发语言环境
