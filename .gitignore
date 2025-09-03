@@ -1,0 +1,108 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.settings/
+.classpath
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn/
+.pnpm-debug.log*
+
+# Logs
+logs
+*.log
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+
+# Erlang/OTP
+.rebar3
+_build/
+ebin/
+*.beam
+*.dump
+erl_crash.dump
+.erlang.cookie
+
+# Rebar
+.rebar
+deps/
+_deps/
+_checkouts/
+rebar3.crashdump
+
+# AO/Arweave specific
+*.keyfile
+*.wallet
+*.ar-wallet
+wallet.json
+keyfile.json
+.aos/
+
+# Test coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+tmp/
+temp/
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Project specific
+submissions/*
+!submissions/README.md
+!submissions/example/
+local-test/
+private/
