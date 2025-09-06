@@ -1,18 +1,13 @@
 # Workshop 1: AO Fundamentals
 
-Status: In Progress
-Date: August 29, 2025
-Tags: Content
-Tasks: Workshop 1 Content Preparation (https://www.notion.so/Workshop-1-Content-Preparation-25dc18e690da8020bb0ae08d275e6ba9?pvs=21)
-
 <aside>
 💡
 
 Introduction to AO
-• Why: The need for persistent, distributed computing
-• What: AO as a decentralized computer network
-• How: Basic architecture and concepts
-• Demo: Show Windows Task Manager analogy - "AO processes are like OS processes"
+- Why: The need for persistent, distributed computing
+- What: AO as a decentralized computer network
+- How: Basic architecture and concepts
+- Demo: Show Windows Task Manager analogy - "AO processes are like OS processes"
 
 </aside>
 
