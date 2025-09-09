@@ -25,3 +25,9 @@ Content Outline:
 • Deploy and test complete application
 
 Key Outcome: Participants have a working web application interacting with their AO process
+
+### aoconnect-test 相关文档
+<https://github.com/elliotsayes/aoconnect-test>
+
+### ao-chat-webapp
+<https://github.com/elliotsayes/ao-chat-webapp>
