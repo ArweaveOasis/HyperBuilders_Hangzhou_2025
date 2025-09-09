@@ -100,9 +100,3 @@ temp/
 *.backup
 *.old
 
-# Project specific
-submissions/*
-!submissions/README.md
-!submissions/example/
-local-test/
-private/
