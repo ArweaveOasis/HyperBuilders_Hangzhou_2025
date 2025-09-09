@@ -58,15 +58,13 @@
 ---
 
 ## 技术架构（可选）
+
 - Frontend: React/Vue/其他 + aoconnect
 - AO Process: Lua handlers
 - 读取优化: HyperBEAM endpoints
 - 钱包: ArConnect
 
-## 联系方式
-
-- GitHub: @username
-```
+---
 
 ## 注意事项
 
