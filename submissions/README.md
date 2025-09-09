@@ -38,6 +38,10 @@
 
 ## 已知限制
 - 简述当前限制或待办。
+
+## 联系方式
+- GitHub: @username
+- Wallet Address: `<你的钱包地址>`
 ```
 
 ## Demo
