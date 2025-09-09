@@ -9,7 +9,8 @@ A decentralized check-in community permanently running on , helping you rise ear
 - 在线：<https://earlybirds-day.vercel.app/#/>（可选）
 - 视频：<https://...>（≤3 分钟，二选一必填）
 - 测试账号/数据：<如适用>
-- 源码：https://github.com/brickhu/earlybirds
+- 前端：https://github.com/brickhu/earlybirds
+- 后端：https://github.com/brickhu/ebs-protocols
 
 ## Limits
 - 简述当前限制或待办。
