@@ -17,15 +17,24 @@
 ## 简介
 一句话电梯演讲（≤150 字）：要解决的问题、目标用户与价值。
 
+## AO 进程信息
+- Process ID: `<你的进程ID>` （43字符）
+- Process Name: `<进程名称>`（如果有）
+- Network: `<主网/测试网>`
+
 ## 快速开始
 1. 如需环境变量：`cp .env.example .env`
 2. 启动：<你的命令>（例如 `npm i && npm run dev` 或 `docker-compose up -d`）
 3. 访问：<URL>（标注端口/路径）
+4. AO 交互：
+   - 使用 aos CLI: `aos <process-id>`
+   - 或通过 Web UI 发送消息
 
 ## 演示
 - 在线：<https://...>（可选）
 - 视频：<https://...>（≤3 分钟，二选一必填）
 - 测试账号/数据：<如适用>
+- AO 进程查看：<ao.link或其他查看器链接>
 
 ## 已知限制
 - 简述当前限制或待办。
@@ -45,7 +54,19 @@
    - PR 标题：`[Submission] <team>/<project>`
    - PR 描述：简介 + 运行方式 + Demo 链接/视频
    - 标签：由官方/机器人自动打（队伍无需手动选择）。
+
 ---
+
+## 技术架构（可选）
+- Frontend: React/Vue/其他 + aoconnect
+- AO Process: Lua handlers
+- 读取优化: HyperBEAM endpoints
+- 钱包: ArConnect
+
+## 联系方式
+
+- GitHub: @username
+```
 
 ## 注意事项
 
@@ -65,6 +86,12 @@ A: 正常，说明已完成什么就行
 
 **Q: 有什么节点或者网络比较好？**  
 A: 如果 HyperBEAM 网络稳定，最好是 HyperBEAM，但如果网络不稳定，就是用 LegacyNet。发现网络不稳定就赶紧切换，不要花时间在等待上。
+
+**Q: Process ID 怎么获取？**  
+A: 在 aos 中运行 `ao.id` 或创建进程后的返回值
+
+**Q: 需要部署多个进程吗？**  
+A: 按需，一个进程能搞定就用一个
 
 ---
 
