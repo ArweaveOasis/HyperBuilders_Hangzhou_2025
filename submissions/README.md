@@ -45,13 +45,7 @@
    - PR 标题：`[Submission] <team>/<project>`
    - PR 描述：简介 + 运行方式 + Demo 链接/视频
    - 标签：由官方/机器人自动打（队伍无需手动选择）。
-
 ---
-
-## 联系方式
-
-- GitHub: @username
-```
 
 ## 注意事项
 
