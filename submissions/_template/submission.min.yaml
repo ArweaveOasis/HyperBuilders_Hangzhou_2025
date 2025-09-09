@@ -1,0 +1,10 @@
+team: "<Team Name>"
+members:
+  - github: "<github_handle>"
+project: "<Project Name>"
+track: "AI | DeFi | Infra | Social | Other"
+summary: "≤120 字电梯演讲"
+how_to_run: "简述启动命令或指向 README"
+demo_links:
+  - "https://..."
+
