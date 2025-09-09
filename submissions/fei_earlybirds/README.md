@@ -19,7 +19,7 @@ A decentralized check-in community permanently running on , helping you rise ear
 - 在线：<https://earlybirds-day.vercel.app/>（可选）
 - 视频：<https://...>（≤3 分钟，二选一必填）
 - 测试账号/数据：<如适用>
-- AO 进程查看：<ao.link或其他查看器链接>
+- AO 进程查看：https://www.ao.link/#/entity/nHUF1zKzb7c_wZEFr4W1reBPxKP_PkrH4wVU2nZA-Bw
 
 ## 已知限制
 - 简述当前限制或待办。
@@ -27,3 +27,20 @@ A decentralized check-in community permanently running on , helping you rise ear
 ## 联系方式
 - GitHub: @username
 - Wallet Address: `<你的钱包地址>`
+
+
+# EarlyBirds
+
+A decentralized check-in community permanently running on , helping you rise early and earn $WORM on-chain.
+
+## 快速开始
+3. 访问：https://earlybirds-day.vercel.app
+
+## 演示
+- 在线：<https://earlybirds-day.vercel.app/#/>（可选）
+- 视频：<https://...>（≤3 分钟，二选一必填）
+- 测试账号/数据：<如适用>
+
+## 已知限制
+- 简述当前限制或待办。
+
