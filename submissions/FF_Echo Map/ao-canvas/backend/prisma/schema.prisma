@@ -1,0 +1,226 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  handle    String?  @unique
+  wallet    Json?    // {chain: string, address: string}
+  prefs     Json?    // {locale: string, theme: string}
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  sessions        Session[]
+  accessPolicies  AccessPolicy[]
+  chainPointers   ChainPointer[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String?
+  rootNodeId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  roles       Role[]
+  debates     Debate[]
+  ideas       Idea[]
+  reflections Reflection[]
+  canvasNodes CanvasNode[]
+  canvasEdges CanvasEdge[]
+
+  @@map("sessions")
+}
+
+model Role {
+  id        String   @id @default(cuid())
+  sessionId String
+  name      String
+  persona   String
+  avatarUrl String?
+  params    Json?    // {model: string, temperature: number, top_p: number, max_tokens: number}
+  provenance String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  session        Session       @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  debatesAsA     Debate[]      @relation("RoleA")
+  debatesAsB     Debate[]      @relation("RoleB")
+  debateMessages DebateMessage[]
+
+  @@map("roles")
+}
+
+model Debate {
+  id            String   @id @default(cuid())
+  sessionId     String
+  topic         String
+  roleAId       String
+  roleBId       String
+  roundsPlanned Int?
+  status        String   @default("pending") // pending, active, completed, cancelled
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  session    Session       @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  roleA      Role          @relation("RoleA", fields: [roleAId], references: [id], onDelete: Cascade)
+  roleB      Role          @relation("RoleB", fields: [roleBId], references: [id], onDelete: Cascade)
+  rounds     DebateRound[]
+  messages   DebateMessage[]
+  reflections Reflection[]
+
+  @@map("debates")
+}
+
+model DebateRound {
+  id          String    @id @default(cuid())
+  debateId    String
+  index       Int
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  // Relations
+  debate    Debate          @relation(fields: [debateId], references: [id], onDelete: Cascade)
+  messages  DebateMessage[]
+
+  @@unique([debateId, index])
+  @@map("debate_rounds")
+}
+
+model DebateMessage {
+  id          String   @id @default(cuid())
+  debateId    String
+  roundId     String?
+  roleId      String
+  content     String
+  citations   Json?    // Array of citation objects
+  meta        Json?    // Additional metadata
+  provenance  String?
+  createdAt   DateTime @default(now())
+
+  // Relations
+  debate Debate     @relation(fields: [debateId], references: [id], onDelete: Cascade)
+  round  DebateRound? @relation(fields: [roundId], references: [id], onDelete: SetNull)
+  role   Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@map("debate_messages")
+}
+
+model Idea {
+  id          String   @id @default(cuid())
+  sessionId   String
+  text        String
+  attachments Json?    // Array of attachment objects
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("ideas")
+}
+
+model Reflection {
+  id             String   @id @default(cuid())
+  sessionId      String
+  sourceDebateId String?
+  text           String
+  tags           String[] // Array of tag strings
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  provenance     String?
+
+  // Relations
+  session      Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  sourceDebate Debate? @relation(fields: [sourceDebateId], references: [id], onDelete: SetNull)
+
+  @@map("reflections")
+}
+
+model CanvasNode {
+  id        String   @id @default(cuid())
+  sessionId String
+  kind      String   // idea, debate, reflection, etc.
+  title     String?
+  contentRef Json?   // {type: string, id?: string, externalUrl?: string, cid?: string}
+  x         Float
+  y         Float
+  layout    Json?    // {w?: number, h?: number, color?: string}
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  session     Session      @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  outgoingEdges CanvasEdge[] @relation("FromNode")
+  incomingEdges CanvasEdge[] @relation("ToNode")
+
+  @@map("canvas_nodes")
+}
+
+model CanvasEdge {
+  id        String   @id @default(cuid())
+  sessionId String
+  fromNodeId String
+  toNodeId   String
+  relation  String   // time, summary, detail, contrast
+  meta      Json?    // {direction?: string}
+  createdAt DateTime @default(now())
+
+  // Relations
+  session  Session     @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  fromNode CanvasNode  @relation("FromNode", fields: [fromNodeId], references: [id], onDelete: Cascade)
+  toNode   CanvasNode  @relation("ToNode", fields: [toNodeId], references: [id], onDelete: Cascade)
+
+  @@unique([fromNodeId, toNodeId, relation])
+  @@map("canvas_edges")
+}
+
+model AccessPolicy {
+  id           String   @id @default(cuid())
+  userId       String
+  resourceType String   // session, debate, etc.
+  resourceId   String
+  visibility   String   @default("private") // private, public, shared
+  allowed      Boolean  @default(true)
+  revoked      Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, resourceType, resourceId])
+  @@map("access_policies")
+}
+
+model ChainPointer {
+  id        String   @id @default(cuid())
+  userId    String?
+  chain     String
+  txId      String?
+  cid       String?
+  owner     String?
+  signature String?
+  timestamp DateTime @default(now())
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("chain_pointers")
+}
