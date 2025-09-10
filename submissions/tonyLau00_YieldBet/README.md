@@ -31,6 +31,14 @@ npm install
 ## Demo Video
 
 
+## Process
+1. YIELD_BET_PROCESS = 'U3upS58YV3G6gyOcGN8yUDEYI7knoMquGbxbfgatZ9o'
+
+2. MOCKUSD_PROCESS = '-8GDsfPS-1-T5v5-_JGlCBQhepRP-2bCgzESO0zhcIo'
+
+3. YIELD_BET_REGISTRATION = 'MvJVeB7Z2MEI5cZygP77FedjuYu62MI6kIUuyncvLgQ'
+
+
 ## 联系方式
 - GitHub: @username: TonyLau00
 - Wallet Address: `UgGtgLe64P5N70xh3oA_JnAAAMPCglIsvdeu0RW44Z0`
