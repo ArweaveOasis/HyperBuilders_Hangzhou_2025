@@ -29,7 +29,6 @@
 ## 演示DEMO
 - 在线agent：<https://ocoagent.xyz
 - web2：<https://onecooo.cn
-- 视频：<https://...>（≤3 分钟，二选一必填）
 - 测试账号/数据：<如适用>
 - AO 进程查看：<ao.link或其他查看器链接>
 
