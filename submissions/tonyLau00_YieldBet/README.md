@@ -29,7 +29,7 @@ npm install
 ```
 
 ## Demo Video
-https://studio.youtube.com/video/8qnVXiHyAIg/edit
+https://youtu.be/8qnVXiHyAIg
 
 
 ## Process
