@@ -6,22 +6,23 @@
 
 ## AO 进程信息
 - Process ID: `<iuy9lPpMoMcA5gqglNbZ7QreP57Wn4n3leLRk_weiCI>` 
-- Process Name: `<进程名称>`（如果有）
+- Process Name: 无
 - Network: `<测试网>`
 
 ## 快速开始
-1. 如需环境变量：`cp .env.example .env`
-2. 启动：<你的命令>（例如 `npm i && npm run dev` 或 `docker-compose up -d`）
-3. 访问：<URL>（标注端口/路径）
+1. 如需环境变量：无
+2. 启动：npmi&&npmrun dev
+3. 访问：http://localhost:5173/
 4. AO 交互：
-   - 使用 aos CLI: `aos <process-id>`
-   - 或通过 Web UI 发送消息
+   - 使用 aos CLI: `aos
+     
 5.为什么选择 AO ?
     1.	）永久存储（Arweave）：知识图谱数据可长期保存，避免丢失与篡改，形成可信知识库
 	2.	）链上计算： Agent 可直接在链上执行推理与查询，无需依赖中心化服务器。
 	3.	）可组合 Agent 架构：多个行业智能体可相互调用与协作，快速构建跨领域应用。
 	4.	）开放数据访问：通过 MCP 接口和 AO 调用，第三方开发者可直接使用知识服务。
     5.  ）原生激励机制：知识贡献者可通过上链确权获得 Token 激励，形成知识经济闭环。
+	
 6.图谱数据目前服务于：
 华为，清华，腾讯，中科院，航天科工，中核集团等.
 
@@ -29,9 +30,7 @@
 ## 演示DEMO
 - 在线agent：<https://ocoagent.xyz
 - web2：<https://onecooo.cn
-- 视频：<https://...>（≤3 分钟，二选一必填）
-- 测试账号/数据：<如适用>
-- AO 进程查看：<ao.link或其他查看器链接>
+- AO 进程查看：https://www.ao.link/#/entity/iuy9lPpMoMcA5gqglNbZ7QreP57Wn4n3leLRk_weiCI?tab=source-code
 
 ## 已知限制
 - 1.Arweave 数据确权.
