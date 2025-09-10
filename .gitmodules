@@ -1,0 +1,6 @@
+[submodule "submissions/fei_earlybirds/frontend"]
+	path = submissions/fei_earlybirds/frontend
+	url = https://github.com/brickhu/earlybirds.git
+[submodule "submissions/fei_earlybirds/backend"]
+	path = submissions/fei_earlybirds/backend
+	url = https://github.com/brickhu/ebs-protocols.git
