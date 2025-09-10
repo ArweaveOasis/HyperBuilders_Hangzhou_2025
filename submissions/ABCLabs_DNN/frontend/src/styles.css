@@ -1,0 +1,85 @@
+ :root{
+ 	/* Creao-like black & white minimal theme */
+ 	--bg: #ffffff;
+ 	--surface: #ffffff;
+ 	--muted: #6b7280; /* cool gray */
+ 	--text: #0b1220; /* near-black */
+ 	--accent-solid: #111827; /* deep neutral for primary actions */
+ 	--accent-gradient-start: rgba(17,24,39,1);
+ 	--accent-gradient-end: rgba(17,24,39,0.95);
+ 	--glass: rgba(0,0,0,0.04);
+ 	--radius-lg: 12px;
+ 	--radius-md: 8px;
+ 	--card-elevation: 18px;
+ }
+
+*{box-sizing:border-box}
+
+body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased}
+
+/* Header */
+.header-hero{background:linear-gradient(180deg, rgba(124,58,237,0.03), transparent); box-shadow:0 1px 0 rgba(15,23,36,0.04)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700}
+.brand-logo{width:40px;height:40px;border-radius:8px;background:var(--accent-solid);display:inline-block}
+.nav-link{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600}
+.nav-link:hover{color:var(--text);background:rgba(0,0,0,0.03)}
+
+/* Layout */
+.page {max-width:1100px;margin:0 auto;padding:28px}
+.hero{padding:28px 0}
+
+/* Cards */
+.card{background:var(--surface);border-radius:var(--radius-lg);padding:0;border:1px solid rgba(0,0,0,0.06);display:flex;flex-direction:column;min-height:360px}
+.card-visual{height:180px;border-top-left-radius:var(--radius-lg);border-top-right-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(90deg,#ffffff,rgba(0,0,0,0.02));display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.card-body{padding:16px;display:flex;flex-direction:column;flex:1}
+.card-title{font-size:18px;margin:8px 0 4px 0;color:var(--text);font-weight:700}
+.card-desc{color:var(--muted);font-size:14px}
+
+/* Tags & meta */
+.tag{display:inline-block;padding:6px 10px;margin-right:8px;background:rgba(99,102,241,0.06);border-radius:999px;font-size:12px;color:var(--muted)}
+
+.actions{margin-top:auto;display:flex;align-items:center;gap:12px}
+
+/* Buttons */
+.btn{background:#000;color:#fff;border:none;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:700}
+.btn{background:var(--accent-solid);color:#fff;border:none;padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:700;box-shadow:0 8px 24px rgba(16,24,40,0.06);transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(16,24,40,0.08)}
+.btn-ghost{background:transparent;border:1px solid rgba(15,23,42,0.06);color:var(--text);padding:8px 12px;border-radius:10px}
+.btn-ghost:hover{background:rgba(15,23,42,0.02);transform:none}
+
+/* Forms */
+.form-card{max-width:520px;margin:0 auto}
+.input{width:100%;padding:12px;border-radius:var(--radius-md);border:1px solid rgba(0,0,0,0.06);background:#fff;color:var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+.input{background:#fff;border:1px solid rgba(2,6,23,0.06);color:var(--text);box-shadow:none;padding:10px;border-radius:8px}
+.input:focus{outline:none;border-color:rgba(2,6,23,0.12);box-shadow:0 8px 24px rgba(2,6,23,0.04)}
+.textarea{min-height:120px;padding:12px;border-radius:var(--radius-md);border:1px solid rgba(15,23,36,0.06);background:#fff;color:var(--text)}
+
+/* utility */
+.muted{color:var(--muted)}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+
+/* Modal / Enrollment UI */
+.modal-backdrop{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:60;background:rgba(2,6,23,0.45);backdrop-filter: blur(4px)}
+.modal-card{background:var(--surface);border-radius:var(--radius-lg);padding:24px;border:1px solid rgba(2,6,23,0.06);width:720px;max-width:95%;box-shadow:0 18px 48px rgba(2,6,23,0.08);}
+
+/* Dropzone styling used by AddNodeModal */
+.dropzone{border-radius:10px;border:2px dashed rgba(15,23,42,0.08);padding:18px;text-align:center;color:var(--muted);background:linear-gradient(180deg, rgba(250,250,250,0.6), #fff)}
+.dropzone:hover{border-color:rgba(15,23,42,0.14)}
+.dropzone img{max-width:100%;max-height:280px;object-fit:contain;border-radius:8px}
+.enroll-stage{display:flex;gap:16px;align-items:center}
+.enroll-guide{flex:1}
+.enroll-cam{width:320px;height:320px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:visible;position:relative}
+.fc-video{width:320px;height:320px;border-radius:10px;background:#f3f4f6;object-fit:cover;display:block;z-index:1}
+.circle-mask{width:220px;height:220px;border-radius:50%;box-shadow:0 0 0 9999px rgba(255,255,255,0.9) inset;pointer-events:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2}
+.progress-dots{display:flex;gap:8px;margin-top:12px}
+.dot{width:10px;height:10px;border-radius:999px;background:rgba(15,23,36,0.06)}
+.dot.active{background:var(--accent-solid)}
+.countdown{font-size:28px;font-weight:700;color:var(--accent-solid)}
+
+/* small responsive tweaks */
+@media (max-width: 640px) {
+	.page{padding:16px}
+	.brand-logo{width:32px;height:32px}
+	.card{padding:14px}
+}
+
