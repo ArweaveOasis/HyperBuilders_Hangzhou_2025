@@ -1,5 +1,9 @@
 # <Project YieldBet Game>
 
+## related repo
+1. https://github.com/TonyLau00/yield-bet-contract (lua)
+2. https://github.com/TonyLau00/yield-bet-app (frontend)
+
 ## Introduction
 This is a mock trading game building on AO called YieldBet. Each wallet could apply for 1000 mockUSD for trading here. This project use HyperBEAM relay to fetch realtime price data from polygon.io.  The MockUSD process will deposit a fixed amount of coin to the price pool of YieldBet process. User's profit come from this price pool. Let's see whose trading strategy or agent can win the entire price pool.
 
@@ -14,26 +18,17 @@ Currently only long position is supported.
 6. User process ask for 1000 mockUSD by: `send({target=<mockusd_01>, action='Mint'})`
 7. send a buy order with order type `market`
 
-```lua
-send({
-    target = '<mockusd_01>',
-    action = 'Transfer',
-    tags = {
-        recipient = '<yield_bet_01>',
-        quantity = '240'
-    },
-    data = {
-        orderType = 'market',
-        ticker = 'AAPL',
-        amount = '1',
-        price = '0',
-        slippage = '0.005'
-    }
-})
+> since I am using the hyper-aos, it has some issue connecting with the aoconnect. I applied a walkaround method which is using a registration > process. Using the wallet address to spawn a process in side the hb node hyper-aos and send message to registration process to register owner address and current process. Then everything is good.
+
+
+
+
+## Qucik start Frontend
+```
+npm install
 ```
 
-
-## (Frontend)
+## Demo Video
 
 
 ## 联系方式
