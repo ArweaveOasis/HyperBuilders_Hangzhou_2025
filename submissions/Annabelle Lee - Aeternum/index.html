@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fashion Website with Three Pages</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    // Polyfill for process
+    if (typeof process === 'undefined') {
+      window.process = {
+        env: {},
+        version: 'v16.0.0',
+        platform: 'browser'
+      };
+    }
+  </script>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
