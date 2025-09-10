@@ -3,10 +3,10 @@
 A decentralized check-in community permanently running on , helping you rise early and earn $WORM on-chain.
 
 ## Get Started
-3. 访问：https://dev.earlybirds.today
+3. 访问：https://dev.earlybirds.day
 
 ## Demo
-- 在线：<https://dev.earlybirds.today>（可选）
+- 在线：<https://dev.earlybirds.day>（可选）
 - 视频：<https://...>（≤3 分钟，二选一必填）
 - 测试账号/数据：<如适用>
 - 前端：https://github.com/brickhu/earlybirds
