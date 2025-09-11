@@ -80,7 +80,7 @@ After deploying your AO process, update the process ID in `src/config/index.ts`:
 ```typescript
 export const config = {
   // AO Network Configuration
-  aoProcessId: 'YOUR_PROCESS_ID_HERE', // Replace with your deployed process ID
+  aoProcessId: 'eKGX2gHG5wfaEu_P90jBBRMEDS7e819YbwFvkThbG54', // Replace with your deployed process ID
   
   // APUS HyperBEAM Node Configuration
   apusHyperbeamNodeUrl: 'http://72.46.85.207:8734',
