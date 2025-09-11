@@ -1,144 +1,118 @@
-# AO Memory - 去中心化AI记忆代理
+Memo, an intelligent memory agent based on the AO network, combines a vector database and AI large models to provide users with a conversational experience with long-term memory capabilities. It enables intelligent memory retrieval through vector search and supports memory export to Arweave for permanent storage, creating an AI memory asset that truly belongs to the user.
 
-## 简介
-基于AO网络的智能记忆代理，结合向量数据库和AI大模型，为用户提供具有长期记忆能力的对话体验。通过Weaviate向量搜索实现智能记忆检索，支持记忆导出到Arweave永久存储，打造真正属于用户的AI记忆资产。
+---
 
-## AO 进程信息
-- Process ID: `pqv5D0p8bmWfTG6oLRDzLlFl63QR29UOB8YOWFP5rIw` 
-- Process Name: `AOMemory Agent`
-- Network: `主网`
-- Memory Agent ID: `需要部署` (用于记忆管理)
-- Marketplace ID: `需要部署` (用于记忆交易)
+project local here
 
-## 快速开始
+[gateway](https://github.com/hi-Ernest/ao-memory/tree/main/gateway)
 
-### 1. 环境准备
+[backend](https://github.com/hi-Ernest/ao-memory/tree/main/ao_process)
+
+[frontend](https://github.com/hi-Ernest/ao-memory/tree/main/src)
+
+
+## Features
+- Wallet connection with arweave-wallet-kit
+- AI chat powered by AO Network (aoconnect)
+- **NEW: Memory AI ChatV2** - Enhanced AI chat with OpenAI integration and memory-focused prompts
+- Memory marketplace for trading AI memories
+- Real-time attestation display
+- Modern Web3 UI design with fullscreen support
+- TypeScript support with strict type checking
+- Centralized configuration management
+
+## Configuration
+- Update the configuration in `src/config/index.ts`
+- Main configuration includes:
+  - `aoProcessId`: Your AO process ID
+  - `appName`: Application name
+  - `defaultAttestedBy`: Default attestation providers
+  - `walletPermissions`: Required wallet permissions
+  - `openaiApiKey`: Your OpenAI API key (for ChatV2 Memory AI features)
+
+### Setting Up Memory AI (ChatV2)
+1. Get an OpenAI API key from [OpenAI Platform](https://platform.openai.com/account/api-keys)
+2. Copy `env.example` to `.env.local`
+3. Add your API key: `REACT_APP_OPENAI_API_KEY=your_api_key_here`
+4. Access the Memory AI by clicking the "🧠 MEMORY AI" tab in the sidebar
+
+## Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build
+
+## AO Process Deployment
+
+This project includes an AO process that handles AI inference requests. Follow these steps to deploy your own AO process:
+
+### 1. Install aos CLI
+
 ```bash
-# 克隆项目
-git clone <repo-url>
-cd ao-memory
-
-# 启动向量数据库
-docker-compose up -d
-
-# 前端环境
-npm install
-```
-
-### 2. 配置环境变量
-```bash
-# 网关服务配置
-cd gateway
-# 创建 .env 文件并配置以下变量：
-OPENAI_API_KEY=sk-xxx
-OPENAI_MODEL=gpt-4o-mini
-
-# Ollama 配置 (用于本地嵌入)
-OLLAMA_URL=http://localhost:11434
-
-# Weaviate 向量数据库配置
-WEAVIATE_URL=http://localhost:8080
-WEAVIATE_API_KEY=
-
-# AO 钱包配置 (JSON 格式的钱包私钥)
-AO_WALLET_JSON={"private_key":"your_wallet_private_key_json"}
-
-# AO 进程 ID 配置
-MEMORY_PROCESS_ID=your_memory_process_id
-MARKET_PROCESS_ID=your_market_process_id
-
-# 服务器端口
-PORT=8787
-
-```
-
-### 3. 启动服务
-```bash
-# 启动网关服务 (端口 8787)
-cd gateway
-npm run dev
-
-# 启动前端 (端口 5173)
-cd ..
-npm run dev
-```
-
-### 4. 部署AO进程
-```bash
-# 安装 aos CLI
 npm i -g https://preview_ao.arweave.net
-
-# 部署Memory Agent
-cd ao_process
-aos memory_agent
-.load memory_agent.lua
-
-# 部署Marketplace 
-aos marketplace  
-.load marketplace.lua
-
-# 更新配置文件中的进程ID
 ```
 
-### 6. AO 交互
-- 使用 aos CLI: `aos <process-id>`
-- 或通过 Web UI 连接钱包后发送消息
-- 查看记忆: 发送 `GetConversationHistory` 动作
-- 清除记忆: 发送 `ClearConversationHistory` 动作
+### 2. Spawn your process & deploy the AO Process
+ Clone the repo to your computer.
+1. **Navigate to the ao_process directory:**
+   ```bash
+   cd ao_process
+   ```
 
-## 演示
-- 在线: http://localhost:5173 (本地运行后访问)
-- 视频: [演示视频链接] (≤3分钟，展示AI记忆对话功能)
-- 测试账号: 连接Arweave钱包后可直接对话测试
-- AO 进程查看: https://ao.link/#/entity/pqv5D0p8bmWfTG6oLRDzLlFl63QR29UOB8YOWFP5rIw
+2. **Spawn your process:**
+   ```bash
+   aos my_process
+   ```
+3. **Select aos:**
+   When prompted, select the default `aos` option. There is no need to select `hyper-hos`.
 
-## 核心功能
+   ![aos selection example](./aos_selection.png)
 
-### 🧠 智能记忆系统
-- **向量检索**: 使用Weaviate + Ollama实现语义相似搜索
-- **长期记忆**: 每用户最多存储1000条对话历史
-- **上下文感知**: 基于历史对话提供个性化回复
+4. **Load the AO agent code:**
+   ```bash
+   .load ao_agent.lua
+   ```
 
-### 🔗 AO网络集成  
-- **去中心化存储**: 记忆数据存储在AO进程中
-- **钱包身份**: 基于Arweave钱包地址的用户识别
-- **智能合约**: Lua编写的AO进程处理记忆逻辑
+### 3. Update Configuration
 
-### 💾 记忆导出交易
-- **加密上传**: 本地AES-GCM加密后上传Arweave
-- **市场机制**: 通过Marketplace进程管理记忆资产交易
-- **永久存储**: 利用Arweave的永久存储特性
+After deploying your AO process, update the process ID in `src/config/index.ts`:
 
-## 技术架构
+```typescript
+export const config = {
+  // AO Network Configuration
+  aoProcessId: 'YOUR_PROCESS_ID_HERE', // Replace with your deployed process ID
+  
+  // APUS HyperBEAM Node Configuration
+  apusHyperbeamNodeUrl: 'http://72.46.85.207:8734',
+  // ... rest of config
+} as const;
+```
 
-### Frontend
-- React 18 + TypeScript + Vite
-- Ant Design UI组件
-- arweave-wallet-kit钱包连接
-- @permaweb/aoconnect AO网络通信
+### 4. AO Process Code
 
-### Gateway API
-- Node.js + Express + TypeScript
-- Weaviate向量数据库集成
-- Apus 对话模型
-- Ollama本地嵌入模型 (nomic-embed-text)
+The AO process code is located in `ao_process/ao_agent.lua`. This process:
 
-### AO Processes
-- **ao_agent.lua**: 主要AI推理和记忆管理
-- **memory_agent.lua**: 专门的记忆存储和检索
-- **marketplace.lua**: 记忆资产交易市场
+- Listens for inference requests with the "Infer" action
+- Forwards requests to the APUS AI service
+- Stores results in a cache for retrieval
+- Exposes results via the `patch@1.0` protocol
 
-### Infrastructure  
-- Docker Compose (Weaviate + Ollama)
-- Arweave网络永久存储
-- HyperBEAM/LegacyNet网络支持
+### Process Flow
 
-## 已知限制
-- 需要本地运行Ollama和Weaviate服务
-- OpenAI API调用需要付费Key
-- 记忆导出功能需要配置Marketplace进程
-- 当前仅支持文本记忆，未来将支持多模态
+1. **Frontend sends request** → AO Process receives "Infer" action
+2. **AO Process forwards** → APUS AI service processes the request
+3. **AI service responds** → AO Process stores result in cache
+4. **Frontend retrieves** → Results are fetched via HTTP API
 
-## 联系方式
-- GitHub: @hi-Ernest
-- Wallet Address: `kdC3NSGpwA9EFHRJo50gLpbIaie5hGyGeCg3CVtm1O8`
+## Quick Start
+```bash
+npm install
+npm run dev
+```
+
+## Tech Stack
+- React 19 + TypeScript + Vite
+- Ant Design
+- arweave-wallet-kit + @permaweb/aoconnect
+- ESLint with TypeScript support
+- AO Network (Lua-based smart contracts)
